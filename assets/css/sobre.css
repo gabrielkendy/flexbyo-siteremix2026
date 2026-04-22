@@ -1,0 +1,810 @@
+/* ==========================================================================
+   FLEXBYO ACADEMY® — SOBRE CSS
+   Estilos específicos da página /sobre.html
+   Depende de: shared.css, components.css
+   ========================================================================== */
+
+/* ==========================================================
+   SEÇÃO 2 — HISTÓRIA (2 colunas: texto + imagem com parallax)
+   ========================================================== */
+.historia {
+  background: var(--off-white);
+}
+
+.historia .grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 120px;
+  align-items: start;
+}
+
+.historia .body p {
+  font-size: clamp(16px, 1.2vw, 19px);
+  line-height: 1.75;
+  color: color-mix(in oklab, var(--ink) 78%, transparent);
+  max-width: 52ch;
+  font-weight: 300;
+}
+
+.historia .body p + p {
+  margin-top: 24px;
+}
+
+.historia .body p em {
+  font-style: italic;
+  color: var(--teal-deep);
+  font-family: var(--font-display);
+  font-size: 1.05em;
+}
+
+.historia .side {
+  position: sticky;
+  top: 120px;
+}
+
+.historia .side .studio-img {
+  position: relative;
+  aspect-ratio: 3/4;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--cream);
+  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, .35);
+  will-change: transform;
+}
+
+.historia .side .studio-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+
+.historia .side .studio-img:hover img {
+  transform: scale(1.04);
+}
+
+.historia .side .studio-img .corner {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: rgba(10, 10, 10, .5);
+  backdrop-filter: blur(6px);
+  padding: 6px 10px;
+  border-radius: 1px;
+}
+
+.historia .side .studio-img .corner:nth-of-type(2) {
+  top: auto;
+  left: auto;
+  bottom: 14px;
+  right: 14px;
+}
+
+.historia .side .stamp {
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ink) 55%, transparent);
+  display: flex;
+  justify-content: space-between;
+}
+
+.historia .lead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.35;
+  color: var(--teal-deep);
+  font-weight: 400;
+  margin-bottom: 40px;
+  max-width: 22ch;
+  letter-spacing: -.01em;
+}
+
+@media (max-width: 960px) {
+  .historia .grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .historia .side {
+    position: static;
+  }
+
+  .historia .side .studio-img {
+    aspect-ratio: 4/5;
+  }
+}
+
+/* ==========================================================
+   SEÇÃO 3 — MÉTODO (3 pilares numerados grandes)
+   ========================================================== */
+.metodo {
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.metodo .head-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 100px;
+}
+
+.metodo .head em {
+  color: var(--teal-deep);
+}
+
+.metodo .intro {
+  font-size: 17px;
+  line-height: 1.7;
+  color: color-mix(in oklab, var(--ink) 65%, transparent);
+  max-width: 42ch;
+  font-weight: 300;
+}
+
+.pilares {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.pilar {
+  padding: 56px 40px 48px;
+  border-right: 1px solid var(--line);
+  position: relative;
+  transition: background .6s cubic-bezier(.22,1,.36,1);
+}
+
+.pilar:last-child {
+  border-right: 0;
+}
+
+.pilar:hover {
+  background: color-mix(in oklab, var(--teal-bright) 6%, transparent);
+}
+
+.pilar .num {
+  font-family: var(--font-display);
+  font-size: clamp(80px, 9vw, 140px);
+  line-height: 1;
+  font-weight: 300;
+  color: var(--teal-deep);
+  font-style: italic;
+  margin-bottom: 32px;
+  display: block;
+  font-variation-settings: "opsz" 144;
+  letter-spacing: -.04em;
+  transition: color .5s cubic-bezier(.22,1,.36,1);
+}
+
+.pilar:hover .num {
+  color: var(--teal-bright);
+}
+
+.pilar h3 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 400;
+  letter-spacing: -.015em;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  color: var(--teal-ink);
+  max-width: 16ch;
+}
+
+.pilar h3 em {
+  font-style: italic;
+  color: var(--teal-bright);
+}
+
+.pilar p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: color-mix(in oklab, var(--ink) 68%, transparent);
+  font-weight: 300;
+  max-width: 32ch;
+}
+
+.pilar .tag {
+  margin-top: 32px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ink) 45%, transparent);
+  padding-top: 20px;
+  border-top: 1px dashed var(--line);
+  display: inline-block;
+}
+
+@media (max-width: 960px) {
+  .metodo .head-row {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .pilares {
+    grid-template-columns: 1fr;
+  }
+
+  .pilar {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 48px 0;
+  }
+
+  .pilar:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* ==========================================================
+   SEÇÃO 4 — O ESPAÇO (galeria mosaico assimétrico)
+   ========================================================== */
+.espaco {
+  background: var(--off-white);
+}
+
+.espaco .head-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 80px;
+}
+
+.espaco .intro {
+  font-size: 17px;
+  line-height: 1.7;
+  color: color-mix(in oklab, var(--ink) 70%, transparent);
+  font-weight: 300;
+  max-width: 48ch;
+}
+
+.espaco .gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 120px;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+
+.espaco .gallery .ph {
+  border-radius: 4px;
+}
+
+/* Layout assimétrico (12 col x ~6 rows) */
+.espaco .g1 { grid-column: span 7; grid-row: span 4; }
+.espaco .g2 { grid-column: span 5; grid-row: span 3; }
+.espaco .g3 { grid-column: span 5; grid-row: span 3; }
+.espaco .g4 { grid-column: span 4; grid-row: span 3; }
+.espaco .g5 { grid-column: span 4; grid-row: span 3; }
+.espaco .g6 { grid-column: span 4; grid-row: span 3; }
+
+.espaco .features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 56px;
+}
+
+.espaco .feature {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.espaco .feature b {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--teal-bright);
+  font-weight: 500;
+}
+
+.espaco .feature span {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--teal-ink);
+  line-height: 1.3;
+  max-width: 22ch;
+}
+
+.espaco .cta-row {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 960px) {
+  .espaco .head-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .espaco .gallery {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 100px;
+  }
+
+  .espaco .g1 { grid-column: span 6; grid-row: span 3; }
+  .espaco .g2 { grid-column: span 3; grid-row: span 3; }
+  .espaco .g3 { grid-column: span 3; grid-row: span 3; }
+  .espaco .g4 { grid-column: span 2; grid-row: span 3; }
+  .espaco .g5 { grid-column: span 2; grid-row: span 3; }
+  .espaco .g6 { grid-column: span 2; grid-row: span 3; }
+
+  .espaco .features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .espaco .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 140px;
+  }
+
+  .espaco .g1,
+  .espaco .g2,
+  .espaco .g3,
+  .espaco .g4,
+  .espaco .g5,
+  .espaco .g6 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .espaco .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   SEÇÃO 5 — NÚMEROS (faixa com stats)
+   ========================================================== */
+.numeros {
+  background: var(--teal-ink);
+  color: var(--off-white);
+  padding: 100px 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.numeros::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 20% 50%,
+    color-mix(in oklab, var(--teal-bright) 18%, transparent),
+    transparent 55%
+  );
+  pointer-events: none;
+}
+
+.numeros .wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.numeros .grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line-light);
+  border-bottom: 1px solid var(--line-light);
+}
+
+.numeros .stat {
+  padding: 48px 32px;
+  border-right: 1px solid var(--line-light);
+}
+
+.numeros .stat:last-child {
+  border-right: 0;
+}
+
+.numeros .stat .n {
+  font-family: var(--font-display);
+  font-size: clamp(68px, 7vw, 110px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: var(--teal-bright);
+  font-variation-settings: "opsz" 144;
+  display: flex;
+  align-items: baseline;
+}
+
+.numeros .stat .n em {
+  font-style: italic;
+  font-size: .5em;
+  color: var(--gold);
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+.numeros .stat .lbl {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--off-white) 72%, transparent);
+  max-width: 22ch;
+  line-height: 1.5;
+}
+
+@media (max-width: 960px) {
+  .numeros {
+    padding: 80px 24px;
+  }
+
+  .numeros .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .numeros .stat:nth-child(2) {
+    border-right: 0;
+  }
+
+  .numeros .stat:nth-child(1),
+  .numeros .stat:nth-child(2) {
+    border-bottom: 1px solid var(--line-light);
+  }
+}
+
+@media (max-width: 560px) {
+  .numeros .stat {
+    padding: 36px 20px;
+  }
+}
+
+/* ==========================================================
+   SEÇÃO 6 — EQUIPE (grid de cards com placeholder)
+   ========================================================== */
+.equipe {
+  background: var(--off-white);
+}
+
+.equipe .head-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 80px;
+}
+
+.equipe .intro {
+  font-size: 17px;
+  line-height: 1.7;
+  color: color-mix(in oklab, var(--ink) 68%, transparent);
+  font-weight: 300;
+  max-width: 46ch;
+}
+
+.equipe-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.equipe-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform .6s cubic-bezier(.22,1,.36,1);
+}
+
+.equipe-card:hover {
+  transform: translateY(-6px);
+}
+
+.equipe-card .photo {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.equipe-card .photo .ph {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.equipe-card .idx {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--off-white);
+  background: rgba(10, 10, 10, .45);
+  backdrop-filter: blur(6px);
+  padding: 6px 10px;
+  border-radius: 1px;
+}
+
+.equipe-card .body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.equipe-card .body h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  color: var(--teal-ink);
+  line-height: 1.1;
+}
+
+.equipe-card .body .spec {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ink) 55%, transparent);
+}
+
+.equipe-card .body .frase {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--teal-deep);
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  margin-top: 6px;
+}
+
+.equipe-card .certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.equipe-card .certs span {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ink) 60%, transparent);
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.equipe-foot {
+  margin-top: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+
+.equipe-foot .count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ink) 55%, transparent);
+}
+
+@media (max-width: 1080px) {
+  .equipe-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .equipe .head-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .equipe-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .equipe-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .equipe-foot {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ==========================================================
+   SEÇÃO 7 — VALORES (5 princípios horizontais)
+   ========================================================== */
+.valores {
+  background: var(--ink);
+  color: var(--off-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.valores::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 90% 30%,
+    color-mix(in oklab, var(--teal-deep) 22%, transparent),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.valores .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.valores .head-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 100px;
+}
+
+.valores .head em {
+  color: var(--teal-bright);
+}
+
+.valores .intro {
+  font-size: 17px;
+  line-height: 1.7;
+  color: color-mix(in oklab, var(--off-white) 75%, transparent);
+  font-weight: 300;
+  max-width: 42ch;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line-light);
+}
+
+.valor {
+  padding: 48px 28px 40px;
+  border-right: 1px solid var(--line-light);
+  position: relative;
+  transition: background .6s cubic-bezier(.22,1,.36,1);
+}
+
+.valor:last-child {
+  border-right: 0;
+}
+
+.valor:hover {
+  background: color-mix(in oklab, var(--teal-deep) 30%, transparent);
+}
+
+.valor .num {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 5.5vw, 84px);
+  line-height: 1;
+  font-weight: 300;
+  color: var(--gold);
+  font-style: italic;
+  display: block;
+  margin-bottom: 28px;
+  font-variation-settings: "opsz" 144;
+  letter-spacing: -.04em;
+  opacity: .75;
+  transition: opacity .5s ease, color .5s ease;
+}
+
+.valor:hover .num {
+  opacity: 1;
+  color: var(--teal-bright);
+}
+
+.valor h3 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 400;
+  letter-spacing: -.015em;
+  color: var(--off-white);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.valor p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: color-mix(in oklab, var(--off-white) 72%, transparent);
+  font-weight: 300;
+}
+
+@media (max-width: 1080px) {
+  .valores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .valor {
+    border-bottom: 1px solid var(--line-light);
+  }
+
+  .valor:nth-child(2) {
+    border-right: 0;
+  }
+
+  .valor:nth-child(4),
+  .valor:nth-child(5) {
+    border-right: 1px solid var(--line-light);
+  }
+
+  .valor:nth-child(5) {
+    border-right: 0;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .valores .head-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .valores-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .valor {
+    border-right: 0;
+    padding: 36px 0;
+  }
+
+  .valor:nth-child(4),
+  .valor:nth-child(5) {
+    border-right: 0;
+  }
+
+  .valor:nth-child(5) {
+    grid-column: auto;
+  }
+}

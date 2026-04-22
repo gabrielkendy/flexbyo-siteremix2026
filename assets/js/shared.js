@@ -40,7 +40,8 @@ window.addEventListener('scroll', () => {
     }
     const n = cur.dataset.sec;
     counterNum.textContent = n;
-    const dark = ['01', '05', '08', '09'].includes(n);
+    const darkSections = window.__DARK_SECTIONS__ || ['01', '05', '08', '09'];
+    const dark = darkSections.includes(n);
     counterEl.classList.toggle('light', dark);
   }
 }, { passive: true });
