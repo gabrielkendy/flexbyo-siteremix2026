@@ -1,0 +1,12 @@
+node_modules/
+.vercel
+.env
+.env.local
+.DS_Store
+Thumbs.db
+*.log
+.claude/
+project/FlexByo-Home-Offline.html
+project/Home.html
+project/Home-print.html
+project/uploads/
