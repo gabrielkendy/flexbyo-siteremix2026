@@ -15,10 +15,11 @@ em Curitiba, dentro do ParkShoppingBarigui. Produzido pela Agencia BASE.
 ## Paginas
 
 - `/` — Home
-- `/sobre` — Sobre nos (historia, metodo, espaco, equipe, valores)
-- `/planos` — Restart, Creditos, Flex 8 + calculadora + FAQ
-- `/contato` — 3 canais, formulario, mapa, FAQ operacional
-- `/privacidade` — Politica de privacidade LGPD
+- `/sobre` — Sobre nos
+- `/modalidades` — 7 modalidades com sidebar sticky
+- `/planos` — Planos + calculadora + FAQ
+- `/contato` — Formulario + mapa + FAQ operacional
+- `/privacidade` — Politica LGPD
 
 ## Rodar localmente
 
@@ -39,27 +40,31 @@ Ver [DESIGN-SYSTEM.md](./DESIGN-SYSTEM.md) — tokens, componentes e padroes.
 
 ```
 sites-remix/
-├── index.html + sobre.html + planos.html + contato.html + privacidade.html
+├── index.html + sobre.html + modalidades.html + planos.html + contato.html + privacidade.html
 ├── robots.txt + sitemap.xml
 ├── DESIGN-SYSTEM.md + vercel.json + .gitignore
+├── api/contato.js (Vercel Function — email via Resend)
 └── assets/
-    ├── css/ (shared, components, consent, home, sobre, planos, contato)
-    ├── js/ (analytics, tracking, shared, home, sobre, planos, contato)
-    ├── fonts/
-    └── images/
+    ├── css/ (shared, components, consent, home, sobre, modalidades, planos, contato)
+    ├── js/ (analytics, tracking, shared, home, sobre, modalidades, planos, contato)
+    ├── images/og/ (5 OG images 1200x630)
+    ├── images/favicons/ (SVG + PNGs + ICO)
+    └── fonts/
 ```
 
-## TODOs de producao
+## TODOs de producao (backlog)
 
-- [x] Google Analytics 4 (PROMPT 07)
-- [x] Cookie consent banner LGPD (PROMPT 07)
-- [x] Sitemap.xml + robots.txt (PROMPT 07)
-- [x] Schema.org LocalBusiness (PROMPT 07)
-- [x] Politica de Privacidade (PROMPT 07)
-- [ ] Criar OG images reais (1200x630) por pagina
-- [ ] Configurar favicon set completo
-- [ ] Conectar formulario de contato com Resend/n8n
+- [x] Criar pagina /modalidades.html — v1.1.0
+- [x] Google Analytics 4 — v1.0.0
+- [x] Cookie consent banner LGPD — v1.0.0
+- [x] Sitemap.xml + robots.txt — v1.0.0
+- [x] Schema.org LocalBusiness — v1.0.0
+- [x] Politica de Privacidade — v1.0.0
+- [x] OG images 1200x630 por pagina — v1.0.0
+- [x] Favicon set completo — v1.0.0
+- [x] Formulario de contato via Resend — v1.0.0
 - [ ] Substituir placeholders .ph por fotos reais do estudio
 - [ ] Configurar Meta Pixel (quando iniciar campanhas)
+- [ ] Configurar Sentry error tracking
 - [ ] Dominio proprio: flexbyo.com.br
-- [ ] Criar pagina /modalidades.html (PROMPT 03 pendente)
+- [ ] GA_ID e Search Console verification reais (trocar placeholders)
