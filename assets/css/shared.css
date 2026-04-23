@@ -82,6 +82,10 @@ nav.top{
 nav.top.scrolled{padding:14px 40px;}
 nav.top .brand{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:500;font-size:18px;letter-spacing:-.01em;}
 nav.top .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--teal-bright);}
+.brand-logo{height:32px;width:auto;display:block;filter:invert(1);transition:opacity .3s ease;}
+.brand:hover .brand-logo{opacity:.85;}
+@media (max-width:860px){.brand-logo{height:26px;}}
+@media (max-width:560px){.brand-logo{height:24px;}}
 nav.top ul{display:flex;gap:36px;list-style:none;}
 nav.top ul a{font-size:12px;letter-spacing:.22em;text-transform:uppercase;position:relative;padding:6px 0;}
 nav.top ul a::after{content:"";position:absolute;bottom:0;left:0;width:0;height:1px;background:currentColor;transition:width .4s ease;}
