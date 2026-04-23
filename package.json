@@ -1,0 +1,17 @@
+{
+  "name": "flexbyo-siteremix",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site FlexByo Academy",
+  "scripts": {
+    "generate:og": "node scripts/generate-og.js",
+    "generate:favicons": "node scripts/generate-favicons.js",
+    "generate:all": "npm run generate:og && npm run generate:favicons"
+  },
+  "dependencies": {
+    "resend": "^4.0.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  }
+}

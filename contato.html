@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/assets/images/favicons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png">
   <meta name="google-site-verification" content="TODO_COLAR_CODIGO_AQUI">
   <title>Contato | FlexByo Academy® — Mossunguê, Curitiba</title>
   <meta name="description" content="Agende seu Restart por R$ 29,90. Rua Prof. Pedro Viriato P. Souza 600, ParkShoppingBarigüi, Curitiba. WhatsApp (41) 99704-9069. Seg-Sex 06h-22h · Sáb 08h-14h.">
@@ -15,6 +19,7 @@
   <meta property="og:description" content="WhatsApp (41) 99704-9069. ParkShoppingBarigüi. Seg-Sex 06-22h · Sáb 08-14h.">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="FlexByo Academy®">
+  <meta property="og:image" content="https://flexbyo-siteremix2026.vercel.app/assets/images/og/og-contato.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#0E6A75">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -161,6 +166,12 @@
 
     <form class="form-card reveal d2" id="form-restart" novalidate>
       <div class="form-head"><span>Restart &middot; 2 aulas</span><b>R$ 29,90</b></div>
+
+      <!-- Honeypot: invisivel pra humanos, bots preenchem -->
+      <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+        <label for="f-website">Deixe em branco</label>
+        <input type="text" id="f-website" name="_honeypot" tabindex="-1" autocomplete="off">
+      </div>
 
       <div class="field" data-field="nome">
         <label for="f-nome">Nome completo <i>*</i></label>

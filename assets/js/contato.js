@@ -126,10 +126,35 @@
         var originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<span>Enviando...</span><span class="arrow">\u23F3</span>';
 
-        // STUB — substituir por fetch real pra Resend/n8n/email API depois
-        console.log('\uD83D\uDCE8 Novo Restart solicitado:', data);
+        fetch('/api/contato', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nome: data.nome,
+            whatsapp: data.whatsapp,
+            email: data.email,
+            nascimento: data.nascimento,
+            modalidade: data.modalidade,
+            experiencia: data.experiencia,
+            mensagem: data.mensagem,
+            _honeypot: form._honeypot ? form._honeypot.value : '',
+            source: 'form-contato',
+            submitted_at: new Date().toISOString()
+          })
+        }).then(function(response) {
+          if (response.ok) {
+            console.log('Lead enviado com sucesso');
+            if (window.flexTrack) window.flexTrack('form_submit_success', { modalidade_interesse: data.modalidade, experiencia_previa: data.experiencia });
+          } else {
+            console.warn('Backend retornou erro:', response.status);
+            if (window.flexTrack) window.flexTrack('form_backend_error', { status: response.status });
+          }
+        }).catch(function(err) {
+          console.error('Erro de rede:', err);
+          if (window.flexTrack) window.flexTrack('form_network_error', { error: err.message });
+        });
 
-        // Simula delay de rede (800ms)
+        // UX sempre positiva (nao bloqueia aluna mesmo em erro)
         setTimeout(function() {
           submitBtn.classList.add('sent');
           submitBtn.innerHTML = '<span>Enviado com sucesso \u2713</span><span class="arrow">\u2713</span>';
