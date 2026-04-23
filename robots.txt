@@ -1,0 +1,12 @@
+# FlexByo Academy® - robots.txt
+# https://flexbyo-siteremix2026.vercel.app
+
+User-agent: *
+Allow: /
+Disallow: /assets/js/
+Disallow: /_tmp/
+Disallow: /*.backup.html$
+
+Crawl-delay: 1
+
+Sitemap: https://flexbyo-siteremix2026.vercel.app/sitemap.xml
