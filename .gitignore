@@ -13,4 +13,5 @@ project/Home.html
 project/Home-print.html
 project/uploads/
 
-.vercel
+# Analytics
+*.ga-credentials.json

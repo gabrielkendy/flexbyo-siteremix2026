@@ -1,0 +1,191 @@
+/* ==========================================================================
+   FLEXBYO ACADEMY® — CONSENT BANNER (LGPD)
+   Banner de cookies que aparece na primeira visita.
+   Depende de: shared.css
+   ========================================================================== */
+
+.consent-banner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--ink);
+  color: var(--off-white);
+  padding: 28px 32px;
+  border-radius: 4px;
+  box-shadow:
+    0 30px 80px -20px rgba(0, 0, 0, .5),
+    0 0 0 1px color-mix(in oklab, var(--teal-bright) 30%, transparent);
+  z-index: 9998;
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity .5s cubic-bezier(.22,1,.36,1),
+    transform .5s cubic-bezier(.22,1,.36,1);
+}
+
+.consent-banner.show {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.consent-banner .consent-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.consent-banner h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  color: var(--off-white);
+  line-height: 1.2;
+}
+
+.consent-banner h3 em {
+  font-style: italic;
+  color: var(--teal-bright);
+}
+
+.consent-banner .consent-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--teal-bright);
+  color: var(--teal-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.consent-banner p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: color-mix(in oklab, var(--off-white) 75%, transparent);
+  font-weight: 300;
+}
+
+.consent-banner p a {
+  color: var(--teal-bright);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: color .3s ease;
+}
+
+.consent-banner p a:hover {
+  color: var(--off-white);
+}
+
+.consent-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.consent-btn {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
+  text-align: center;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+.consent-btn.primary {
+  background: var(--teal-bright);
+  color: var(--ink);
+  border-color: var(--teal-bright);
+}
+
+.consent-btn.primary:hover {
+  background: var(--off-white);
+  border-color: var(--off-white);
+}
+
+.consent-btn.ghost {
+  background: transparent;
+  color: color-mix(in oklab, var(--off-white) 80%, transparent);
+  border-color: color-mix(in oklab, var(--off-white) 25%, transparent);
+}
+
+.consent-btn.ghost:hover {
+  color: var(--off-white);
+  border-color: var(--off-white);
+}
+
+.consent-preferences {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--teal-ink);
+  color: var(--teal-bright);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 89;
+  border: 1px solid color-mix(in oklab, var(--teal-bright) 40%, transparent);
+  font-size: 16px;
+  transition: transform .3s ease, background .3s ease;
+  opacity: .7;
+}
+
+.consent-preferences.show {
+  display: flex;
+}
+
+.consent-preferences:hover {
+  transform: scale(1.1);
+  background: var(--teal-bright);
+  color: var(--ink);
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .consent-banner {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    padding: 22px 24px;
+  }
+
+  .consent-banner h3 {
+    font-size: 18px;
+  }
+
+  .consent-actions {
+    flex-direction: column;
+  }
+
+  .consent-btn {
+    flex: 1 1 100%;
+  }
+
+  .consent-preferences {
+    left: 16px;
+    bottom: 16px;
+  }
+}
