@@ -5,8 +5,12 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
+*.backup.html
+_tmp/
 .claude/
 project/FlexByo-Home-Offline.html
 project/Home.html
 project/Home-print.html
 project/uploads/
+
+.vercel
