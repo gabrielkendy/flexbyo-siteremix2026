@@ -58,6 +58,7 @@
   color:color-mix(in oklab, var(--off-white) 70%, transparent);line-height:1.8;
 }
 .hero .meta b{color:var(--teal-bright);font-weight:500;}
+@media (max-width:960px){.hero .meta{display:none;}}
 
 .hero .scroll-indicator{
   position:absolute;left:50%;bottom:28px;transform:translateX(-50%);z-index:3;

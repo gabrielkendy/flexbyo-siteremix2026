@@ -153,5 +153,13 @@
       track('click_social', { page: getPageContext(), platform: 'instagram' });
     });
 
+    // 9. WHATSAPP FLOAT
+    var waFloat = document.querySelector('[data-wa-float]');
+    if (waFloat) {
+      waFloat.addEventListener('click', function() {
+        track('click_whatsapp_float', { page: getPageContext() });
+      });
+    }
+
   });
 })();
