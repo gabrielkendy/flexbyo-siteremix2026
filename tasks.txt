@@ -1,0 +1,177 @@
+================================================================================
+FLEXBYO SITE — TASKS (E:/Github/flexbyo-site)
+================================================================================
+Última atualização: 2026-04-25
+Repo: gabrielkendy/flexbyo-siteremix2026 (Vercel)
+URL prod: https://flexbyo-siteremix2026.vercel.app
+Documento-mãe: ../agents_n8n/docs/plans/2026-04-25-flexbyo-site-plans-sync-plan.md
+Runbook dev jr: ../agents_n8n/docs/plans/2026-04-25-flexbyo-plans-sync-DEV-JR-RUNBOOK.md
+
+Legenda: [x] DONE   [ ] TODO   [~] EM ANDAMENTO   [!] BLOQUEADO   [-] BACKLOG
+
+================================================================================
+ESTADO ATUAL DO SITE (diagnóstico 2026-04-25)
+================================================================================
+
+[x] Site clonado em E:/Github/flexbyo-site
+[x] Estrutura mapeada:
+    - HTML 100% estático puro (sem framework SSR/SSG)
+    - 6 páginas: index, sobre, modalidades, planos, contato, privacidade
+    - 1 Vercel Function existente: api/contato.js (Resend para form)
+    - Vercel hosting: cleanUrls=true, cache CDN nos assets
+[x] Planos hardcoded em planos.html identificados:
+    - restart R$ 29,90 (2 aulas)
+    - avulso R$ 69
+    - 10cred R$ 560
+    - 20cred R$ 1.059
+    - 40cred R$ 1.998 (badge "Melhor custo")
+    - flex8_mensal R$ 427/mês (sem fidelidade)
+    - flex8_semestral R$ 414/mês (R$ 2.484 total)
+    - flex8_anual R$ 392/mês (R$ 4.704 total) — recomendado
+[x] CTAs: todos apontam wa.me/5541997049069?text=...
+[x] Confirmado: 30 Créditos e Pilates Individual NÃO aparecem no site
+
+================================================================================
+A FAZER — Plans Catalog Frontend (FASE 5 do runbook, 1,5d)
+================================================================================
+
+PRÉ-REQUISITOS (revisão 2026-04-25 — backend pronto):
+
+[x] Migration plan_catalog aplicada (Fase 2 backend) ✓
+[x] Edge Functions plans-mutator + plan-sync-worker deployed ✓
+    plans-mutator v4, plan-sync-worker v5, payment-webhook v20
+[x] vw_plans_public retorna 9 linhas (todos sync_status=ok)
+[!] Receber do dev backend: SUPABASE_URL, SUPABASE_ANON_KEY,
+    SITE_REVALIDATE_SECRET — pendente entrega ao operador Vercel
+
+EXECUÇÃO:
+
+[~] 5.1 git checkout -b feat/plans-from-api
+        ↳ Trabalho foi feito direto em main (untracked). Antes do push,
+          mover arquivos para branch dedicada.
+
+[x] 5.2 npm install @supabase/supabase-js (package.json modificado)
+
+[x] 5.3 api/plans.js criado
+        - GET only, retorna {plans: [...], fetched_at}
+        - Lê vw_plans_public via @supabase/supabase-js + ANON_KEY
+        - Header: Cache-Control: public, s-maxage=60, stale-while-revalidate=300
+
+[x] 5.4 api/revalidate.js criado
+        - POST only
+        - Valida header X-Revalidate-Secret === env SITE_REVALIDATE_SECRET
+        - Retorna 200 (CDN s-maxage=60 expira sozinho)
+        - Se cliente fizer upgrade Vercel Pro: trocar por revalidateTag (backlog)
+
+[x] 5.5 assets/js/planos.js refatorado com hydratePlans
+        - Adicionar IIFE async hydratePlans() no topo
+        - Tenta fetch /api/plans
+        - Em sucesso: hidrata cards de Restart, Créditos (5 cards), Flex 8 (3 cards)
+        - Em falha: console.warn + mantém HTML estático (graceful degradation)
+        - Funções: hydrateRestart, hydrateCredito, hydrateFlex8
+        - Helper fmtBRL(cents) usando Intl.NumberFormat
+        - REFATOR OPCIONAL (recomendado): adicionar data-plan-slot="<slug>"
+          em cada card no planos.html, simplifica o JS
+
+[x] 5.6 assets/data/plans.fallback.json gerado
+        - Snapshot via curl ${SUPABASE_URL}/rest/v1/vw_plans_public
+        - Backlog: cron mensal regenera
+
+[!] 5.7 Configurar env vars no Vercel (Settings → Environment Variables)
+        BLOQUEADOR ATIVO — sem isso /api/plans retornará 500.
+        - SUPABASE_URL=https://rldaawjkwywealjfloba.supabase.co
+        - SUPABASE_ANON_KEY=<copiar do Supabase dashboard>
+        - SITE_REVALIDATE_SECRET=<mesmo valor do backend>
+        - Marcar para Production + Preview + Development
+
+[!] 5.8 Commit + push (PENDENTE — arquivos untracked em main):
+        git add api/ assets/js/planos.js assets/data/plans.fallback.json
+               package.json package-lock.json
+        git commit -m "feat(plans): hydrate plans from API + revalidate endpoint"
+        git push origin feat/plans-from-api
+
+[!] 5.9 Validação A — preview deploy
+        SMOKE TEST 2026-04-25: https://flexbyo-siteremix2026.vercel.app/api/plans
+        retorna 404 NOT_FOUND (deploy ainda não aconteceu — Fase 5.8 pendente).
+        - Aguardar Vercel preview
+        - Abrir <preview>/planos.html
+        - DevTools Network → /api/plans retorna 200 com 9 plans
+        - Visual: cards exibem preços corretos
+
+[ ] 5.10 Validação B — fallback funcional
+        - Temporariamente alterar SUPABASE_URL para inválida no Vercel preview
+        - Recarregar /planos
+        - Cards continuam visíveis (HTML estático)
+        - Console mostra: "[plans] using static HTML fallback"
+        - REVERTER env var depois
+
+[ ] 5.11 Merge PR para main (auto-deploy production)
+
+================================================================================
+TESTES (parte do FASE 7 do runbook)
+================================================================================
+
+[ ] 7.T7 Site offline / Supabase 5xx → fallback estático funciona (§5.10 acima)
+
+[ ] Smoke test pós-merge:
+    - curl https://flexbyo-siteremix2026.vercel.app/api/plans | jq '.plans|length'
+      → deve retornar 9
+    - Abrir /planos.html no browser
+    - Conferir: Restart 29,90 / 40 Créd R$ 1.998 / Flex 8 Anual R$ 392
+    - Conferir: 30 Créditos APARECE (novo no site!)
+
+================================================================================
+BACKLOG SITE
+================================================================================
+
+[-] BS1 Adicionar data-plan-slot nos cards do planos.html (refator HTML)
+[-] BS2 Stripe Checkout integrado no site (substituir CTAs wa.me/...)
+[-] BS3 Cron Vercel/GitHub Actions regenerando plans.fallback.json mensal
+[-] BS4 Tag-based revalidation (depende upgrade Vercel Pro)
+[-] BS5 Migrar site para Astro/Next se complexidade crescer
+[-] BS6 Página de checkout customizada (se BS2 entrar)
+[-] BS7 i18n (English) — só se academia abrir filial em outra cidade
+[-] BS8 Adicionar Pilates Individual na seção Créditos (depende decisão Kendy)
+
+================================================================================
+ARQUIVOS QUE SERÃO CRIADOS/MODIFICADOS
+================================================================================
+
+CRIADOS:
+  api/plans.js
+  api/revalidate.js
+  assets/data/plans.fallback.json
+
+MODIFICADOS:
+  assets/js/planos.js                  (adiciona hydratePlans IIFE)
+  package.json                         (+ @supabase/supabase-js)
+  package-lock.json
+
+OPCIONAL (refator):
+  planos.html                          (+ data-plan-slot nos cards)
+
+================================================================================
+HISTÓRICO
+================================================================================
+
+2026-04-25  Diagnóstico inicial executado por Orion (a8z-master).
+            Confirmado: site totalmente estático, planos hardcoded.
+            Plano + Runbook dev jr produzidos em ../agents_n8n/docs/plans/.
+
+2026-04-25  Implementação local concluída (Orion):
+            - api/plans.js + api/revalidate.js criados
+            - assets/js/planos.js refatorado com hydratePlans IIFE +
+              fallback /assets/data/plans.fallback.json
+            - planos.html com data-attributes para hidratação
+            - assets/css/planos.css ajustado
+            - package.json + lock atualizados (@supabase/supabase-js)
+            BLOQUEADOR: arquivos untracked em main; precisa criar branch
+            feat/plans-from-api, commit, push, configurar env vars Vercel,
+            promover para production. Sem isso, /api/plans → 404.
+
+2026-04-25  Revisão pós-implementação (Orion):
+            Backend 100% live (Edge Functions deployadas, banco com 9 planos
+            sync_status=ok). Site é o único bloqueador para fechar o gate
+            Fase 7/8 do runbook.
+
+================================================================================

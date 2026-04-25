@@ -132,12 +132,12 @@
 </section>
 
 <!-- === 03 — RESTART CARD DESTACADO === -->
-<section class="restart-card" id="restart" data-sec="03">
-  <div class="card">
+<section class="restart-card" id="restart" data-sec="03" data-plan-group="restart">
+  <div class="card" data-plan-id="restart">
     <div class="left">
-      <span class="tag">Comece por aqui</span>
+      <span class="tag" data-plan-field="subtitle">Comece por aqui</span>
       <h2>Res<em>tart</em>.</h2>
-      <p class="sub">Duas aulas experimentais pra conhecer o studio, sentir na pele a experi&ecirc;ncia FlexByo e descobrir qual modalidade faz o seu corpo responder.</p>
+      <p class="sub" data-plan-field="description">Duas aulas experimentais pra conhecer o studio, sentir na pele a experi&ecirc;ncia FlexByo e descobrir qual modalidade faz o seu corpo responder.</p>
       <ul class="includes">
         <li>2 aulas experimentais dentro de 30 dias</li>
         <li>Acesso a qualquer uma das 7 modalidades</li>
@@ -148,12 +148,12 @@
     <div class="right">
       <div class="price">
         <span class="r">R$</span>
-        <span class="num" data-target="29">29</span>
-        <span class="cents">,90</span>
+        <span class="num" data-plan-field="price-major" data-target="29">29</span>
+        <span class="cents" data-plan-field="price-cents">,90</span>
       </div>
       <div class="micro">Por pessoa &middot; 2 aulas experimentais</div>
-      <a class="btn btn-shine magnetic" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+come%C3%A7ar+pelo+Restart+por+R%24+29%2C90" target="_blank" rel="noopener" style="--bg:var(--teal-bright); --fg:var(--ink);">
-        <span>Agendar meu Restart agora</span>
+      <a class="btn btn-shine magnetic" data-plan-field="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+come%C3%A7ar+pelo+Restart+por+R%24+29%2C90" target="_blank" rel="noopener" style="--bg:var(--teal-bright); --fg:var(--ink);">
+        <span data-plan-field="cta-label">Agendar meu Restart agora</span>
         <span class="arrow">&rarr;</span>
       </a>
       <div class="seal" aria-hidden="true">
@@ -181,37 +181,45 @@
     </div>
 
     <div class="creditos-grid">
-      <article class="credito-card reveal">
+      <article class="credito-card reveal" data-plan-id="avulso">
         <h3 class="pack-name">1 aula<br>avulsa</h3>
-        <div class="total"><span class="r">R$</span><span class="n" data-target="69">69</span><span class="label">Total</span></div>
+        <div class="total"><span class="r">R$</span><span class="n" data-plan-field="price" data-target="69">69</span><span class="label">Total</span></div>
         <ul class="details"><li>Vig&ecirc;ncia <b>30 dias</b></li><li>Quantidade <b>1 aula</b></li></ul>
-        <p class="per-aula"><b>R$ 69,00</b> por aula</p>
-        <a class="buy" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+comprar+1+aula+avulsa+por+R%24+69" target="_blank" rel="noopener"><span>Comprar agora</span><span>&rarr;</span></a>
+        <p class="per-aula"><b data-plan-field="per-class">R$ 69,00</b> por aula</p>
+        <a class="buy" data-plan-field="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+comprar+1+aula+avulsa+por+R%24+69" target="_blank" rel="noopener"><span data-plan-field="cta-label">Comprar agora</span><span>&rarr;</span></a>
       </article>
 
-      <article class="credito-card reveal d1">
+      <article class="credito-card reveal d1" data-plan-id="10cred">
         <h3 class="pack-name">10<br>Cr&eacute;ditos</h3>
-        <div class="total"><span class="r">R$</span><span class="n" data-target="560">560</span><span class="label">Total</span></div>
+        <div class="total"><span class="r">R$</span><span class="n" data-plan-field="price" data-target="560">560</span><span class="label">Total</span></div>
         <ul class="details"><li>Vig&ecirc;ncia <b>60 dias</b></li><li>Quantidade <b>10 aulas</b></li></ul>
-        <p class="per-aula"><b>R$ 56,00</b> por aula</p>
-        <a class="buy" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+comprar+o+pacote+de+10+Cr%C3%A9ditos+por+R%24+560" target="_blank" rel="noopener"><span>Comprar pacote</span><span>&rarr;</span></a>
+        <p class="per-aula"><b data-plan-field="per-class">R$ 56,00</b> por aula</p>
+        <a class="buy" data-plan-field="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+comprar+o+pacote+de+10+Cr%C3%A9ditos+por+R%24+560" target="_blank" rel="noopener"><span data-plan-field="cta-label">Comprar pacote</span><span>&rarr;</span></a>
       </article>
 
-      <article class="credito-card reveal d2">
+      <article class="credito-card reveal d2" data-plan-id="20cred">
         <h3 class="pack-name">20<br>Cr&eacute;ditos</h3>
-        <div class="total"><span class="r">R$</span><span class="n" data-target="1059">1.059</span><span class="label">Total</span></div>
+        <div class="total"><span class="r">R$</span><span class="n" data-plan-field="price" data-target="1059">1.059</span><span class="label">Total</span></div>
         <ul class="details"><li>Vig&ecirc;ncia <b>120 dias</b></li><li>Quantidade <b>20 aulas</b></li></ul>
-        <p class="per-aula"><b>R$ 52,95</b> por aula</p>
-        <a class="buy" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+comprar+o+pacote+de+20+Cr%C3%A9ditos+por+R%24+1.059" target="_blank" rel="noopener"><span>Comprar pacote</span><span>&rarr;</span></a>
+        <p class="per-aula"><b data-plan-field="per-class">R$ 52,95</b> por aula</p>
+        <a class="buy" data-plan-field="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+comprar+o+pacote+de+20+Cr%C3%A9ditos+por+R%24+1.059" target="_blank" rel="noopener"><span data-plan-field="cta-label">Comprar pacote</span><span>&rarr;</span></a>
       </article>
 
-      <article class="credito-card featured reveal d3">
-        <span class="badge">&starf; Melhor custo</span>
+      <article class="credito-card reveal d3" data-plan-id="30cred">
+        <h3 class="pack-name">30<br>Cr&eacute;ditos</h3>
+        <div class="total"><span class="r">R$</span><span class="n" data-plan-field="price" data-target="1499">1.499</span><span class="label">Total</span></div>
+        <ul class="details"><li>Vig&ecirc;ncia <b>150 dias</b></li><li>Quantidade <b>30 aulas</b></li></ul>
+        <p class="per-aula"><b data-plan-field="per-class">R$ 49,97</b> por aula</p>
+        <a class="buy" data-plan-field="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+saber+sobre+o+pacote+de+30+Cr%C3%A9ditos" target="_blank" rel="noopener"><span data-plan-field="cta-label">Quero saber mais</span><span>&rarr;</span></a>
+      </article>
+
+      <article class="credito-card featured reveal d4" data-plan-id="40cred">
+        <span class="badge" data-plan-field="badge">&starf; Melhor custo</span>
         <h3 class="pack-name">40<br>Cr&eacute;ditos</h3>
-        <div class="total"><span class="r">R$</span><span class="n" data-target="1998">1.998</span><span class="label">Total</span></div>
+        <div class="total"><span class="r">R$</span><span class="n" data-plan-field="price" data-target="1998">1.998</span><span class="label">Total</span></div>
         <ul class="details"><li>Vig&ecirc;ncia <b>180 dias</b></li><li>Quantidade <b>40 aulas</b></li></ul>
-        <p class="per-aula"><b>R$ 49,95</b> por aula</p>
-        <a class="buy" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+comprar+o+pacote+de+40+Cr%C3%A9ditos+por+R%24+1.998" target="_blank" rel="noopener"><span>Comprar melhor pacote</span><span>&rarr;</span></a>
+        <p class="per-aula"><b data-plan-field="per-class">R$ 49,95</b> por aula</p>
+        <a class="buy" data-plan-field="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+comprar+o+pacote+de+40+Cr%C3%A9ditos+por+R%24+1.998" target="_blank" rel="noopener"><span data-plan-field="cta-label">Comprar melhor pacote</span><span>&rarr;</span></a>
       </article>
     </div>
 
@@ -232,34 +240,34 @@
     </div>
 
     <div class="flex8-grid">
-      <article class="flex8-card reveal">
-        <span class="tag">Sem fidelidade</span>
+      <article class="flex8-card reveal" data-plan-id="flex8_mensal">
+        <span class="tag" data-plan-field="subtitle">Sem fidelidade</span>
         <h3 class="plan-name">Mensal</h3>
-        <p class="desc">M&ecirc;s a m&ecirc;s, cancela quando quiser com 30 dias de aviso.</p>
-        <div class="price"><span class="r">R$</span><span class="n" data-target="427">427</span><span class="per">/m&ecirc;s</span></div>
+        <p class="desc" data-plan-field="description">M&ecirc;s a m&ecirc;s, cancela quando quiser com 30 dias de aviso.</p>
+        <div class="price"><span class="r">R$</span><span class="n" data-plan-field="price" data-target="427">427</span><span class="per">/m&ecirc;s</span></div>
         <div class="vigencia">Renova&ccedil;&atilde;o autom&aacute;tica mensal</div>
         <div class="benefit"><b>Benef&iacute;cio</b><span>Sem fidelidade &mdash; saia quando quiser</span></div>
-        <a class="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+assinar+o+plano+Flex+8+Mensal+por+R%24+427" target="_blank" rel="noopener"><span>Assinar mensal</span><span>&rarr;</span></a>
+        <a class="cta" data-plan-field="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+assinar+o+plano+Flex+8+Mensal+por+R%24+427" target="_blank" rel="noopener"><span data-plan-field="cta-label">Assinar mensal</span><span>&rarr;</span></a>
       </article>
 
-      <article class="flex8-card reveal d1">
-        <span class="tag">Compromisso leve</span>
+      <article class="flex8-card reveal d1" data-plan-id="flex8_semestral">
+        <span class="tag" data-plan-field="subtitle">Compromisso leve</span>
         <h3 class="plan-name">Semestral</h3>
-        <p class="desc">6 meses de acesso com 15 dias de f&eacute;rias inclusos.</p>
-        <div class="price"><span class="r">R$</span><span class="n" data-target="414">414</span><span class="per">/m&ecirc;s</span></div>
+        <p class="desc" data-plan-field="description">6 meses de acesso com 15 dias de f&eacute;rias inclusos.</p>
+        <div class="price"><span class="r">R$</span><span class="n" data-plan-field="price" data-target="414">414</span><span class="per">/m&ecirc;s</span></div>
         <div class="vigencia">6 meses &middot; R$ 2.484 total</div>
         <div class="benefit"><b>Benef&iacute;cio extra</b><span>15 dias de f&eacute;rias sem perder aulas</span></div>
-        <a class="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+assinar+o+plano+Flex+8+Semestral+por+R%24+414%2Fm%C3%AAs" target="_blank" rel="noopener"><span>Assinar semestral</span><span>&rarr;</span></a>
+        <a class="cta" data-plan-field="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+assinar+o+plano+Flex+8+Semestral+por+R%24+414%2Fm%C3%AAs" target="_blank" rel="noopener"><span data-plan-field="cta-label">Assinar semestral</span><span>&rarr;</span></a>
       </article>
 
-      <article class="flex8-card recommended reveal d2">
-        <span class="tag">Recomendado</span>
+      <article class="flex8-card recommended reveal d2" data-plan-id="flex8_anual">
+        <span class="tag" data-plan-field="subtitle">Recomendado</span>
         <h3 class="plan-name">Anual &mdash; <em>melhor valor</em></h3>
-        <p class="desc">12 meses de acesso com 30 dias de f&eacute;rias inclusos.</p>
-        <div class="price"><span class="r">R$</span><span class="n" data-target="392">392</span><span class="per">/m&ecirc;s</span></div>
+        <p class="desc" data-plan-field="description">12 meses de acesso com 30 dias de f&eacute;rias inclusos.</p>
+        <div class="price"><span class="r">R$</span><span class="n" data-plan-field="price" data-target="392">392</span><span class="per">/m&ecirc;s</span></div>
         <div class="vigencia">12 meses &middot; R$ 4.704 total</div>
         <div class="benefit"><b>Benef&iacute;cio extra</b><span>30 dias de f&eacute;rias + menor valor mensal</span></div>
-        <a class="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+assinar+o+plano+Flex+8+Anual+por+R%24+392%2Fm%C3%AAs" target="_blank" rel="noopener"><span>Assinar anual</span><span>&rarr;</span></a>
+        <a class="cta" data-plan-field="cta" href="https://wa.me/5541997049069?text=Ol%C3%A1%21+Quero+assinar+o+plano+Flex+8+Anual+por+R%24+392%2Fm%C3%AAs" target="_blank" rel="noopener"><span data-plan-field="cta-label">Assinar anual</span><span>&rarr;</span></a>
       </article>
     </div>
 

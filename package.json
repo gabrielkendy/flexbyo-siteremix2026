@@ -9,6 +9,7 @@
     "generate:all": "npm run generate:og && npm run generate:favicons"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.104.1",
     "resend": "^4.0.0"
   },
   "devDependencies": {
