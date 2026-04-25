@@ -132,6 +132,29 @@ BACKLOG SITE
 [-] BS6 Página de checkout customizada (se BS2 entrar)
 [-] BS7 i18n (English) — só se academia abrir filial em outra cidade
 [-] BS8 Adicionar Pilates Individual na seção Créditos (depende decisão Kendy)
+[-] BS9 Implantar GTM (Google Tag Manager) — snippet <head> + noscript <body>
+        Container ID: a definir após BS11 (criar/acesso conta GTM)
+[-] BS10 Implantar Microsoft Clarity via GTM
+         - Tag custom HTML em GTM com snippet do Clarity
+         - Trigger: All Pages
+         - Validar sessões aparecendo no dashboard <24h
+[-] BS11 Criar conta Microsoft Clarity (clarity.microsoft.com)
+         - Domínio inicial: flexbyo-siteremix2026.vercel.app
+         - Owner a definir (Douglas/Kendy)
+[-] BS12 Conta GTM: pegar acesso à existente OU criar nova
+         (tagmanager.google.com), associar ao GA4 do projeto
+[-] BS13 INVESTIGAÇÃO — Vercel vs Cloudflare Pages
+         Por que Vercel hoje:
+         - Repo herdado já configurado
+         - api/contato.js (Resend) usa Vercel Functions
+         - api/plans.js + api/revalidate.js (Plans Catalog)
+           também usam Vercel Functions
+         Trade-offs:
+         - Cloudflare Pages: CDN maior, Workers, custo Pro menor ($5 vs $20)
+         - Tag-based revalidation: Vercel Pro tem; CF requer Cache API custom
+         - Migração: api/*.js → workers/*.js (sintaxe diferente)
+         Recomendação preliminar: manter Vercel até cliente comprar Pro;
+         re-avaliar quando ramp-up de leads exigir Workers/KV.
 
 ================================================================================
 ARQUIVOS QUE SERÃO CRIADOS/MODIFICADOS
