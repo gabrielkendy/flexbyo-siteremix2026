@@ -78,7 +78,11 @@ EXECUÇÃO:
         - Backlog: cron mensal regenera
 
 [!] 5.7 Configurar env vars no Vercel (Settings → Environment Variables)
-        BLOQUEADOR ATIVO — sem isso /api/plans retornará 500.
+        DEFERIDO 2026-04-25: Douglas NÃO tem acesso à conta Vercel.
+        Conseguir credenciais OU pedir ao operador atual (Kendy/Gabriel)
+        que faça a configuração. Sem isso, /api/plans retorna 500.
+        Decisão pendente: BS13 (Vercel vs Cloudflare) pode tornar essa
+        config obsoleta se migrarmos pra Cloudflare Pages.
         - SUPABASE_URL=https://rldaawjkwywealjfloba.supabase.co
         - SUPABASE_ANON_KEY=<copiar do Supabase dashboard>
         - SITE_REVALIDATE_SECRET=<mesmo valor do backend>
@@ -105,7 +109,10 @@ EXECUÇÃO:
         - Console mostra: "[plans] using static HTML fallback"
         - REVERTER env var depois
 
-[ ] 5.11 Merge PR para main (auto-deploy production)
+[!] 5.11 Merge PR para main (auto-deploy production) — DEFERIDO
+         Aguarda: (a) acesso ao Vercel + env vars (5.7) OU
+         (b) decisão BS13 sobre migrar pra Cloudflare. Não promover
+         ao main antes da decisão de host estar fechada.
 
 ================================================================================
 TESTES (parte do FASE 7 do runbook)
@@ -196,5 +203,15 @@ HISTÓRICO
             Backend 100% live (Edge Functions deployadas, banco com 9 planos
             sync_status=ok). Site é o único bloqueador para fechar o gate
             Fase 7/8 do runbook.
+
+2026-04-25  Deferimento decidido (Douglas + Orion):
+            - Push feito em dev (62bae6b + 9bd5682). Auto-merge dev->beta
+              roda; PR beta->main via action sob testes.
+            - 5.7 (Vercel env vars) BLOQUEADO: Douglas sem acesso Vercel.
+            - 5.11 (merge para main) DEFERIDO até decidir BS13:
+              ficar no Vercel (precisa acesso + env vars) OU migrar pra
+              Cloudflare Pages (precisa converter api/*.js -> workers/*.js).
+            - Hotfix imediato não é necessário: site main continua servindo
+              HTML estático com planos hardcoded igual antes desta iniciativa.
 
 ================================================================================
